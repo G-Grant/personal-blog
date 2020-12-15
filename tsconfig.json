@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        // React 17 版本，已不能手动引入 React，如果配置为 react，会报错
+        "jsx": "react-jsx",
+        "experimentalDecorators": true,
+        "noImplicitAny": true,
+        "target": "ES5",
+        "module": "CommonJS"
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"]
+}
