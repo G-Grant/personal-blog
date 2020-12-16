@@ -10,8 +10,7 @@
     "lint-staged": {
         "src/**/*": [
             "prettier --write",
-            "eslint --fix",
-            "git add"
+            "eslint --fix"
         ]
     },
     "repository": "https://github.com/G-Grant/personal-blog.git",
