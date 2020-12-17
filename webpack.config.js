@@ -25,4 +25,8 @@ module.exports = {
             template: resolve(__dirname, './public/index.html'),
         }),
     ],
+    devServer: {
+        compress: true,
+        historyApiFallback: true,
+    },
 };

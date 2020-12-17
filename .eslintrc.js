@@ -1,6 +1,11 @@
 module.exports = {
     parser: '@typescript-eslint/parser',
-    extends: ['plugin:react/recommended', 'plugin:@typescript-eslint/recommended'],
+    extends: [
+        'eslint:recommended',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:react/recommended',
+        'plugin:prettier/recommended',
+    ],
     plugins: ['react-hooks'],
     settings: {
         react: {
@@ -12,5 +17,6 @@ module.exports = {
         'react-hooks/exhaustive-deps': 'warn', // 检查 effect 的依赖
         'react/jsx-uses-react': 'off',
         'react/react-in-jsx-scope': 'off',
+        indent: ['error', 4],
     },
 };
