@@ -1,0 +1,16 @@
+@import '../../style/theme.less';
+
+.header {
+    padding: 10px 0;
+    border-top: 5px solid @primaryColor;
+    text-align: center;
+    a {
+        margin: 0 20px;
+        &:hover {
+            text-decoration: underline;
+        }
+        &.active {
+            color: @primaryColor;
+        }
+    }
+}
