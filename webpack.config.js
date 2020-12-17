@@ -1,6 +1,6 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-const VueLoaderPlugin = require('vue-loader/dist/plugin').default;
+const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
     entry: './index.js',
@@ -8,11 +8,22 @@ module.exports = {
         filename: '[name].js',
         path: path.resolve(__dirname, 'dist'),
     },
+    resolve: {
+        extensions: ['.vue', '.js'],
+    },
     module: {
         rules: [
             {
                 test: /\.vue$/,
                 loader: 'vue-loader',
+            },
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+            },
+            {
+                test: /\.less$/,
+                use: ['style-loader', 'css-loader', 'less-loader'],
             },
         ],
     },
