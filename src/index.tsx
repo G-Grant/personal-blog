@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 // import hljs from 'highlight.js';
 
 import Header from './components/Header';
+import Home from './pages/Home';
 
 import './style/reset.css';
 
@@ -30,9 +31,7 @@ function App(): ReactElement {
         <BrowserRouter>
             <Header />
             <Switch>
-                <Route exact path='/'>
-                    Hello
-                </Route>
+                <Route exact path='/' component={Home} />
                 <Route path='/tag'>标签页</Route>
                 <Route path='/about'>关于</Route>
             </Switch>
