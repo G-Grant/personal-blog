@@ -1,14 +1,12 @@
 <template>
-    <div>Hello World</div>
-    <blog-header></blog-header>
+    <router-link to="/">首页</router-link>
+    <router-link to="/tag">标签</router-link>
+    <router-link to="/about">关于</router-link>
+    <router-view />
 </template>
 
 <script>
-import Header from './components/Header';
-
 export default {
-    components: {
-        'blog-header': Header,
-    },
+    components: {},
 };
 </script>
