@@ -6,18 +6,48 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
     entry: './index.tsx',
     output: {
-        filename: '[name].js',
+        filename: '[name].[contenthash:8].js',
         path: resolve(__dirname, 'dist'),
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
     },
+    optimization: {
+        runtimeChunk: {
+            name: 'manifest',
+        },
+        //minimizer: true, // [new UglifyJsPlugin({...})]
+        splitChunks: {
+            chunks: 'all',
+            minSize: 30000,
+            minChunks: 1,
+            maxAsyncRequests: 5,
+            maxInitialRequests: 3,
+            name: false,
+            cacheGroups: {
+                vendor: {
+                    name: 'vendor',
+                    chunks: 'all',
+                    priority: -10,
+                    reuseExistingChunk: false,
+                    test: /node_modules\/(.*)\.ts[x]?/,
+                },
+            },
+        },
+    },
     module: {
         rules: [
             {
                 test: /\.ts[x]?/,
-                exclude: /node_modules/,
+                include: [
+                    resolve(__dirname, './index.tsx'),
+                    resolve(__dirname, './src'),
+                    resolve(__dirname, './node_modules/tsx-control-statements'),
+                ],
                 loader: 'babel-loader',
+                options: {
+                    plugins: [['@babel/plugin-transform-typescript', { allowNamespaces: true }]],
+                },
             },
             {
                 test: /\.less$/,

@@ -9,6 +9,7 @@ import './index.less';
 function Home(): ReactElement {
     return (
         <div className='home-page'>
+            Home
             <List />
         </div>
     );

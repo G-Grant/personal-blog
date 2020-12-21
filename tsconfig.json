@@ -1,13 +1,15 @@
 {
     "compilerOptions": {
+        "sourceMap": true,
         // React 17 版本，已不能手动引入 React，如果配置为 react，会报错
         "jsx": "react-jsx",
         "experimentalDecorators": true,
+        // 在表达式和声明上有隐含的 any类型时报错。
         "noImplicitAny": true,
-        "target": "ES5",
+        "target": "ESNext",
+        // 指定生成哪个模块系统代码： "None"， "CommonJS"， "AMD"， "System"， "UMD"， "ES6"或 "ES2015"。
         "module": "CommonJS",
+        // 可调用的CommonJS模块必须被做为默认导入，在已有的“老式”模块模式之间保证最佳的互通性
         "esModuleInterop": true
-    },
-    "include": ["src/**/*"],
-    "exclude": ["node_modules"]
+    }
 }
