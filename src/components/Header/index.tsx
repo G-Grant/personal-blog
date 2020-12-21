@@ -1,5 +1,5 @@
-import { memo, ReactElement } from 'react';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { memo, ReactElement, useEffect } from 'react';
+import { Link, useHistory, useRouteMatch } from 'react-router-dom';
 import classnames from 'classnames';
 
 import './index.less';
@@ -27,6 +27,14 @@ const navOptions: INavItem[] = [
 ];
 
 function Header(): ReactElement {
+    const history = useHistory();
+    useEffect(() => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const unListen = history.listen((location, action) => {
+            // 监听路由改变
+        });
+        return () => unListen();
+    }, [history]);
     return (
         <div className='header'>
             {navOptions.map((navItem) => {
