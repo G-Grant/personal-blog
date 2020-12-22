@@ -1,0 +1,65 @@
+@import '../../style/theme.less';
+
+.time-line {
+    position: relative;
+    padding-top: 20px;
+    .time-line-item {
+        position: relative;
+        width: calc(50% - 20px);
+        height: 150px;
+        margin-bottom: 20px;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px 0 @primaryColor;
+        & > span {
+            position: absolute;
+            top: 0;
+            right: -20px;
+            height: 100%;
+            display: inline-block;
+            width: 2px;
+            background-color: @primaryColor;
+            &::before {
+                top: -20px;
+                position: absolute;
+                left: calc(50% - 10px);
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background-color: @primaryColor;
+                display: inline-block;
+                content: ' ';
+            }
+        }
+        &:last-child > span {
+            &::after {
+                bottom: -20px;
+                position: absolute;
+                left: calc(50% - 10px);
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background-color: @primaryColor;
+                display: inline-block;
+                content: ' ';
+            }
+        }
+        &.year-picker {
+            &::before {
+                background-color: darken(@primaryColor, 20%);
+            }
+        }
+        &.odd {
+            margin-left: calc(50% + 20px);
+            & > span {
+                left: -20px;
+                right: auto;
+            }
+        }
+        .content {
+            width: 100%;
+            height: inherit;
+            overflow: hidden;
+        }
+    }
+}

@@ -6,6 +6,7 @@
         "experimentalDecorators": true,
         // 在表达式和声明上有隐含的 any类型时报错。
         "noImplicitAny": true,
+        // 指定 ECMAScript 目标版本
         "target": "ESNext",
         // 指定生成哪个模块系统代码： "None"， "CommonJS"， "AMD"， "System"， "UMD"， "ES6"或 "ES2015"。
         "module": "CommonJS",
