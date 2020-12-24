@@ -2,6 +2,7 @@ const path = require('path');
 const { resolve } = path;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 module.exports = {
     entry: './index.tsx',
@@ -66,9 +67,12 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name].css',
         }),
+        new FriendlyErrorsWebpackPlugin(),
     ],
     devServer: {
         compress: true,
         historyApiFallback: true,
+        stats: 'errors-only',
     },
+    stats: 'errors-only',
 };

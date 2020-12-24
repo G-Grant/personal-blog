@@ -1,6 +1,6 @@
 import { ReactElement, useEffect } from 'react';
 import NProgress from 'nprogress';
-import List from '../../components/List';
+import TimeLine from '../../components/TimeLine';
 
 import Gitalk from 'gitalk';
 
@@ -15,8 +15,7 @@ function Home(): ReactElement {
     }, []);
     return (
         <div className='home-page'>
-            Home
-            <List />
+            <TimeLine />
         </div>
     );
 }

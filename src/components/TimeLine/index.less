@@ -1,28 +1,31 @@
 @import '../../style/theme.less';
 
+@totalWidth: 40px;
+@lineWidth: 2px;
+
 .time-line {
     position: relative;
-    padding-top: 20px;
+    padding: 20px 0;
     .time-line-item {
         position: relative;
-        width: calc(50% - 20px);
+        width: calc((100% - @totalWidth) / 2);
         height: 150px;
         margin-bottom: 20px;
         padding: 15px;
         border-radius: 5px;
         box-shadow: 0 0 5px 0 @primaryColor;
-        & > span {
+        .line {
             position: absolute;
             top: 0;
-            right: -20px;
+            right: calc(-@lineWidth - (@totalWidth - @lineWidth) / 2);
             height: 100%;
             display: inline-block;
-            width: 2px;
+            width: @lineWidth;
             background-color: @primaryColor;
             &::before {
                 top: -20px;
                 position: absolute;
-                left: calc(50% - 10px);
+                left: calc;
                 width: 20px;
                 height: 20px;
                 border-radius: 50%;
@@ -31,35 +34,61 @@
                 content: ' ';
             }
         }
-        &:last-child > span {
-            &::after {
-                bottom: -20px;
-                position: absolute;
-                left: calc(50% - 10px);
-                width: 20px;
-                height: 20px;
-                border-radius: 50%;
-                background-color: @primaryColor;
-                display: inline-block;
-                content: ' ';
+        &:last-child {
+            .line {
+                &::after {
+                    bottom: -20px;
+                    position: absolute;
+                    left: calc(50% - 10px);
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 50%;
+                    background-color: @primaryColor;
+                    display: inline-block;
+                    content: ' ';
+                }
             }
         }
-        &.year-picker {
+        &.year-point {
             &::before {
-                background-color: darken(@primaryColor, 20%);
+                position: absolute;
+                width: 20px;
+                height: 10px;
+                top: -15px;
+                right: -30px;
+                // border-radius: 50%;
+                background-color: red;
+                display: inline-block;
+                content: ' ';
+                z-index: 1;
+            }
+            &.odd {
+                &::before {
+                    left: -30px;
+                    right: auto;
+                }
+            }
+            .line {
+                &::before {
+                    background-color: @primaryColor;
+                }
             }
         }
         &.odd {
             margin-left: calc(50% + 20px);
-            & > span {
+            .line {
                 left: -20px;
                 right: auto;
             }
         }
-        .content {
-            width: 100%;
-            height: inherit;
+        .time-line-content {
+            height: 100%;
             overflow: hidden;
+            .content {
+                width: 100%;
+                height: inherit;
+                overflow: hidden;
+            }
         }
     }
 }

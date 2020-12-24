@@ -47,12 +47,12 @@ function TimeLine(): ReactElement {
                         <Fragment key={yearArticles.year}>
                             <For
                                 of={yearArticles.articles}
-                                body={(article) => {
+                                body={(article, index) => {
                                     return (
                                         <TimeLineItem
                                             key={article.id}
                                             isOdd={!!isOdd}
-                                            isYearLastArticle={!!index}
+                                            isYearLastArticle={!index}
                                             {...article}
                                         />
                                     );
@@ -72,12 +72,13 @@ interface IProps {
     isYearLastArticle: boolean;
 }
 
-function TimeLineItem({ content, isOdd, isYearLastArticle }: IArticle & IProps) {
+function TimeLineItem({ content, isOdd, isYearLastArticle, date }: IArticle & IProps) {
     return (
         <div className={classnames('time-line-item', { odd: isOdd, 'year-point': isYearLastArticle })}>
-            <span />
+            <span className='line' />
             <div className='time-line-content'>
                 <div className='content'>{content}</div>
+                <div>{date}</div>
             </div>
         </div>
     );
